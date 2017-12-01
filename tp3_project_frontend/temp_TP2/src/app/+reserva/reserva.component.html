@@ -1,0 +1,180 @@
+<p-growl [(value)]="msgs"></p-growl>
+<div id="content" class="search-view">
+    <div class="reserva-creator">
+        <div class="reserva-creator__title">
+            <h1>
+                <img src="assets/img/pollo.svg">
+                Poller&iacute;a Pardos Chicken
+            </h1>
+        </div>
+        <div class="reserva-creator">
+            <!-- widget content -->
+            <div class="widget-body">
+                <div id="order-form" class="smart-form">
+                    <fieldset>
+                        <div class="row">
+                            <section class="col col-2">
+                                <label class="input"> <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="dni" placeholder="DNI" [disabled]="reservaResult.estado === 'Anulado' || isNew === false"
+                                           [(ngModel)]="reservaResult.dni" (keyup)="showMessageSuggest($event)"/>
+                                </label>
+                            </section>
+                            <section class="col col-3">
+                                <label class="input"> <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="nombres" placeholder="Nombres" [disabled]="reservaResult.estado === 'Anulado'  || isNew === false"
+                                           [(ngModel)]="reservaResult.nombre"/>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="input"> <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="apellido" placeholder="Apellido" [disabled]="reservaResult.estado === 'Anulado'  || isNew === false"
+                                           [(ngModel)]="reservaResult.ap_paterno"/>
+                                </label>
+                            </section>
+                            <section class="col col-3">
+                                <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+                                    <input type="email" name="correo" placeholder="Correo" [disabled]="reservaResult.estado === 'Anulado'  || isNew === false"
+                                           [(ngModel)]="reservaResult.correo"/>
+                                </label>
+                            </section>
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-2">
+                                <label></label>
+                                <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
+                                    <input type="text" name="tipoReserva" placeholder="Tipo Reserva"
+                                           [(ngModel)]="reservaResult.tipo_reserva" disabled="disabled"/>
+                                </label>
+                            </section>
+                            <section class="col col-3">
+                                <label></label>
+                                <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
+                                    <input type="text" name="local" placeholder="Local"
+                                           [(ngModel)]="reservaResult.nombre_local" disabled="disabled"/>
+                                </label>
+                            </section>
+
+                            <section class="col col-2">
+                                <label>Fecha</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text"
+                                           placeholder="Seleccionar una Fecha" [disabled]="reservaResult.estado === 'Anulado'"
+                                           [(ngModel)]="reservaResult.fecha_reserva" (keyup)="onGetFechaReserva($event)"
+                                           saUiDatepicker date-format="dd/MM/yy"/>
+                                </label>
+                            </section>
+
+                            <section class="col col-2">
+                                <label>Hora (hh:mm)</label>
+                                <label class="input">
+                                    <p-inputMask mask="99:99" [(ngModel)]="reservaResult.hora" [disabled]="reservaResult.estado === 'Anulado'"
+                                                 (onBlur)="onGetHoraReserva($event)"
+                                                 placeholder="00:00" id="hora"></p-inputMask>
+                                </label>
+
+                            </section>
+
+
+                            <section class="col col-2">
+                                <label></label>
+                                <label class="input"> <i class="icon-append fa fa-phone"></i>
+                                    <input type="tel" name="phone" placeholder="Tel&eacute;fono" [disabled]="reservaResult.estado === 'Anulado'  || isNew === false"
+                                           saMaskedInput="(999) 999-9999" [(ngModel)]="reservaResult.telefono" />
+                                </label>
+                            </section>
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-2">
+                                <label class="input"> <i class="icon-append fa fa-money"></i>
+                                    <input type="text" name="cantidad" placeholder="Cantidad" [disabled]="reservaResult.estado === 'Anulado'"
+                                           [(ngModel)]="reservaResult.cantidad_personas" />
+                                </label>
+                            </section>
+                            <section class="col col-2">
+                                <label class="input">
+                                    <input type="text" name="mesa" placeholder="Mesa" [(ngModel)]="reservaResult.nombre_mesa" disabled="disabled"/>
+                                </label>
+                            </section>
+                            <section class="col col-2" *ngIf="showultimaMesa === true">
+                                <label>Ultima mesa reservada: {{mesaUltimaReserva}}</label>
+                            </section>
+                            <div class="col col-5" *ngIf="reservaResult.estado == 'Confirmado' || reservaResult.estado == null">
+                                <button type="submit" class="btn btn-lg btn-primary">
+                                    Mesas disponibles
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-4">
+                                <label>Comentario</label>
+                                <label class="input">
+                                <textarea rows="4" cols="50" [disabled]="reservaResult.estado === 'Anulado'" [(ngModel)]="reservaResult.comentario">
+                                </textarea>
+                                </label>
+                            </section>
+                            <section class="table-responsive col-md-6" *ngIf="reservaResult.estado == 'Confirmado' || reservaResult.estado == null">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let asset of mesaResult, let i=index, let last=last, let odd=odd, let even=even">
+
+                                        <td width="10">
+                                            <button [ngClass]="{disponible_table : asset.disponibilidad, no_disponible_table: !asset.disponibilidad}"
+                                                    [disabled]="!asset.disponibilidad" (click)="selectedTable(asset)">
+                                                <div *ngIf="asset.disponibilidad == true">
+                                                    <img src="../../assets/img/mesa/mesa_disponible.jpeg" height="50" width="50"/>{{asset.nombre_mesa}}
+                                                </div>
+                                                <div *ngIf="asset.disponibilidad == false">
+                                                    <img src="../../assets/img/mesa/mesa_nodisponible.jpeg" height="50" width="50"/>{{asset.nombre_mesa}}
+                                                </div>
+                                            </button>
+                                        </td>
+                                        <td width="5">
+                                            {{asset.fecha_mesa}}
+                                        </td>
+                                        <td width="5">
+                                            {{asset.hora_mesa}}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                        <div class="row" *ngIf="reservaResult.estado == 'Confirmado' || reservaResult.estado == null">
+                            <section class="col col-2">
+                                <label class="label-dummy">&nbsp;</label>
+                                <button type="submit" class="btn btn-lg btn-primary" (click)="guardarReserva()">
+                                    Guardar
+                                </button>
+                            </section>
+                            <section class="col col-2">
+                                <label class="label-dummy">&nbsp;</label>
+                                <button type="submit" class="btn btn-lg btn-primary" (click)="cancelarReserva()">
+                                    Cancelar
+                                </button>
+                            </section>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        <p-dialog header="Mensaje" [(visible)]="display" modal="modal" width="300" [responsive]="true">
+            <p>Estimado {{reservaResult.nombre}} {{reservaResult.ap_paterno}} desea elegir la misma mesa de siempre?</p>
+            <p-footer>
+                <button type="button" pButton icon="fa-check" (click)="yesQuestion()" label="Si"></button>
+                <button type="button" pButton icon="fa-close" (click)="noQuestion()" label="No"></button>
+            </p-footer>
+        </p-dialog>
+    </div>
+</div>

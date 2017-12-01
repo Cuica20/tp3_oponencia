@@ -1,0 +1,64 @@
+<aside id="left-panel">
+
+    <!-- User info -->
+    <sa-login-info></sa-login-info>
+    <!-- end user info -->
+
+    <nav>
+        <!-- NOTE: Notice the gaps after each icon usage <i></i>..
+        Please note that these links work a bit different than
+        traditional href="" links. See documentation for details.
+        -->
+
+        <ul saSmartMenu>
+
+            <li routerLinkActive="active">
+                <a routerLink="/home" title="Bienvenida">
+                    <i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">{{'G. de Atenci\u00f3n al Cliente' | i18n}}</span></a>
+            </li>
+            <!--<li routerLinkActive="active">
+                <a routerLink="/menu" title="Pedido">
+                    <i class="fa fa-lg fa-fw fa-list"></i> <span class="menu-item-parent">{{'Pedido' | i18n}}</span></a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/pedido" title="Consulta Pedido">
+                    <i class="fa fa-lg fa-fw fa-delicious"></i> <span class="menu-item-parent">{{'Consulta Pedido' | i18n}}</span></a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/reserva" title="Creaci&oacute;n Reserva">
+                    <i class="fa fa-lg fa-fw fa-calendar-times-o"></i> <span class="menu-item-parent">{{'Creaci&oacute;n Reserva' | i18n}}</span></a>
+            </li>-->
+            <!--<li routerLinkActive="active">
+                <a routerLink="/reservaConsulta" title="Reserva">
+                    <i class="fa fa-lg fa-fw fa-calendar-times-o"></i> <span class="menu-item-parent">{{'Reserva' | i18n}}</span></a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/dashboard" title="Delivery">
+                    <i class="fa fa-lg fa-fw fa-calendar-times-o"></i> <span class="menu-item-parent">{{'Delivery' | i18n}}</span></a>
+            </li>-->
+            <li routerLinkActive="active">
+                <a routerLink="/promocionpago" title="Promoci\u00f3n de Pago">
+                    <i class="fa fa-lg fa-fw fa-calendar-times-o"></i> <span class="menu-item-parent">{{'Promoci\u00f3n de Pago' | i18n}}</span></a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/reparto" title="Reparto">
+                    <i class="fa fa-lg fa-fw fa-calendar-times-o"></i> <span class="menu-item-parent">{{'Reparto' | i18n}}</span></a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/abastecimiento" title="Reparto">
+                    <i class="fa fa-lg fa-fw fa-shopping-bag"></i> <span class="menu-item-parent">{{'Abastecimiento' | i18n}}</span></a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/recepcioninmediata" title="RecInm">
+                    <i class="fa fa-lg fa-fw fa-shopping-bag"></i> <span class="menu-item-parent">{{'Recepción Inmediata' | i18n}}</span></a>
+            </li>
+            <!--<li routerLinkActive="active">
+                <a routerLink="/recepcioninmediataa" title="Recepcion Inmediata">
+                    <i class="fa fa-lg fa-fw fa-shopping-bag"></i> <span class="menu-item-parent">{{'Recepcion Inmediata' | i18n}}</span></a>
+            </li>-->
+        </ul>
+    </nav>
+
+    <sa-minify-menu></sa-minify-menu>
+
+</aside>

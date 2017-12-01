@@ -1,0 +1,80 @@
+<p-growl [(value)]="msgs"></p-growl>
+<div class="consulta-creator">
+    <div class="consulta-creator__title">
+        <h1>
+            <img src="assets/img/pollo.svg">
+            Poller&iacute;a Pardos Chicken
+        </h1>
+    </div>
+    <div id="content" class="search-view">
+        <div class="consulta-creator">
+            <div class="smart-form">
+                <div class="row">
+                    <div class="col col-6">
+                        <label></label>
+                        <!--<label>Resultado: {{reservaResult.length}}</label>-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="widget-body">
+                        <div class="table-responsive col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>DNI</th>
+                                    <th>Estado</th>
+                                    <th>Fecha Delivery</th>
+                                    <th>Hora Estimada</th>
+                                    <th>C&oacute;digo Carta</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let asset of deliveryResult">
+                                    <td class="text-center" width="40">
+                                        <a href="javascript:void(0)" class="link" (click)="idDetalleGoodleMap(asset)" *ngIf="asset.estado_deliv === 'procesado'">
+                                            <span class="fa fa-eye"></span></a>
+                                    </td>
+                                    <td>{{asset.dni}}</td>
+                                    <td>{{asset.estado_deliv}}</td>
+                                    <td>{{asset.fecha_deliv}}</td>
+                                    <td>{{asset.horaestimada_deliv}}</td>
+                                    <td>{{asset.cod_carta_deliv}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="widget-body">
+                        <div class="table-responsive col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>ID Pedido</th>
+                                    <th>DNI</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let asset of pedidoResult">
+                                    <td class="text-center" width="40">
+                                        <a href="javascript:void(0)" class="link" (click)="irDetallePedido(asset)">
+                                            <span class="fa fa-eye"></span></a>
+                                    </td>
+                                    <td>{{asset.id_pedido}}</td>
+                                    <td>{{asset.dni}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

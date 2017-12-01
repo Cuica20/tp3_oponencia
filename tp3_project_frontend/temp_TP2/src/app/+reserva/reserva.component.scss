@@ -1,0 +1,138 @@
+.reserva-creator {
+  position: relative;
+  background: #fff;
+  box-shadow: 0 3px 4px rgba(0,0,0,.1);
+  border: 1px solid #c1cedb;
+  border-radius: 3px;
+  overflow: hidden;
+  &__title {
+    background: #1094d2;
+    color: #fff;
+    padding: 10px 15px;
+    h1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      img {
+        width: 40px;
+        margin: 0 10px 0 0;
+      }
+    }
+  }
+  &__panes {
+    display: flex;
+    @media screen and (max-width: 750px) {
+      display: block;
+    }
+  }
+}
+
+.widget-body .well{
+  margin-bottom: 0
+}
+
+.search-view {
+  margin-bottom: 15px;
+}
+
+.smart-form {
+  margin: 10px;
+  margin-bottom: 10px;
+}
+
+.label-dummy {
+  display: flex;
+}
+
+.btn-primary {
+  background-color: #2196F3;
+  border-color: #2196F3;
+}
+
+.btn-lg {
+  padding: 4px 16px;
+}
+
+.disponible_table {
+  color: #ffffff;
+  background-color: #096c21;
+
+}
+
+.no_disponible_table {
+  color: #ffffff;
+  background-color: #f9030b;
+
+}
+
+/* Tooltip container */
+[data-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Hide the tooltip content by default */
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Position tooltip above the element */
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -80px;
+  padding: 7px;
+  width: 160px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+/* Show tooltip content on hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  opacity: 1;
+}
+
+.button5 {
+  border-radius: 100%;
+  float: none;
+  margin:auto;
+  display:block;
+}
+
+.blackiconcolor {color:black;}

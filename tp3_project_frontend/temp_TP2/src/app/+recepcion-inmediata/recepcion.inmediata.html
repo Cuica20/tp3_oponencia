@@ -1,0 +1,159 @@
+<p-growl [(value)]="msgs">
+</p-growl>
+
+
+<div class="consulta-creator">
+    <div class="consulta-creator__title">
+        <h1>
+            <img src="assets/img/pollo.svg"> Poller&iacute;a Pardos Chicken
+        </h1>
+    </div>
+    <div style="align-items: center;">
+        <h2>Recepci&oacute;n Inmediata</h2>
+    </div>
+    <div id="content" class="search-view">
+        <div class="consulta-creator">
+ 
+                    <div class="smart-form">
+                        
+                        <!--INICIO Campos de Busqueda-->
+                        <div class="row"> 
+                            <section class="col col-3"> 
+                                <label class="input"> 
+                                    <input type="text" name="nroPersonas" placeholder="Nro de Personas" />
+                                </label>
+                            </section>
+                            <section class="col col-2">
+                                <button type="submit" class="btn btn-sm btn-primary btn-block" (click)="busquedaMesa()">
+                                    BUSCAR
+                                </button>
+                            </section>
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-3"> 
+                                <label class="input">
+                                    <i class="icon-append fa fa-chevron-down"></i>
+                                    <input type="text" name="capacidad" placeholder="Capacidad Mesa" />
+                                </label>
+                            </section>
+                            <section class="col col-2">
+                                <button type="submit" class="btn btn-sm btn-primary btn-block" (click)="limpiarCampos()">
+                                    LIMPIAR
+                                </button>
+                            </section>
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-3"> 
+                                <label class="input">
+                                    <i class="icon-append fa fa-chevron-down"></i>
+                                    <input type="text" name="estado" placeholder="Estado Mesa" />
+                                </label>
+                            </section>
+                            <section class="col col-2">
+                                <span></span>
+                            </section>
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-3">
+                                <span></span>
+                            </section>
+                            <section class="col col-2">
+                                <button type="submit" class="btn btn-sm btn-primary btn-block" (click)="consultarReservas()">
+                                    CONSULTAR RESERVAS
+                                </button>
+                            </section>
+                        </div>
+                        <!--FIN Campos de Busqueda-->
+
+                        <!--INICIO Tabla de Mesas-->
+                        <div class="row">
+                            <div class="widget-body">
+                                <div class="table-responsive col-md-12">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Mesa</th>
+                                                <th>Capacidad</th>
+                                                <th>Hora Llegada</th>
+                                                <th>Estado</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let asset of mesaResult">
+                                                <td>{{asset.mesa}}</td>
+                                                <td>{{asset.capacidad}}</td>
+                                                <td>{{asset.hora_llegada}}</td>
+                                                <td>{{asset.estado}}</td>
+                                                <td> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!--FIN Tabla de Mesas-->
+                    </div> 
+                    <div class="smart-form">
+                        <!--INICIO Tabla de Promociones-->
+                        <div class="row">
+                            <div class="widget-body">
+                                <div class="table-responsive col-md-12">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Promoci&oacute;n</th>
+                                                <th>Precio(S/.)</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let asset of promocionResult">
+                                                <td>{{asset.dni}}</td>
+                                                <td>{{asset.dni}}</td>
+                                                <td> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FIN Tabla de Promociones-->
+
+                        <!-- INICIO Tabla de Comanda-->
+                        <div class="row">
+                            <div class="widget-body">
+                                <div class="table-responsive col-md-12">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Pedido</th>
+                                                <th>Precio(S/.)</th>
+                                                <th>Mesa</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let asset of promocionResult">
+                                                <td>{{asset.dni}}</td>
+                                                <td>{{asset.dni}}</td>
+                                                <td>{{asset.dni}}</td>
+                                                <td> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FIN Tabla de Comanda-->
+                    </div> 
+        </div>
+    </div>
+</div>
+
+ 

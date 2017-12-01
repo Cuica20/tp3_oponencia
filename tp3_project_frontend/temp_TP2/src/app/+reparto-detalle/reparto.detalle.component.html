@@ -1,0 +1,84 @@
+<p-growl [(value)]="msgs"></p-growl>
+<div class="consulta-creator">
+    <div class="consulta-creator__title">
+        <h1>
+            <img src="assets/img/pollo.svg">
+            Poller&iacute;a Pardos Chicken
+        </h1>
+    </div>
+    <div id="content" class="search-view">
+        <div class="consulta-creator">
+            <div class="smart-form">
+                <div class="row">
+                    <section class="col col-4">
+                        <label>DETALLE DE REPARTO</label>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col col-3">
+                        <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
+                            <input type="text" [(ngModel)]="repartidorLocal"/>
+                        </label>
+                    </section>
+                </div>
+
+                <div class="row">
+                    <div class="col col-6">
+                        <label></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="widget-body">
+                        <div class="table-responsive col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+
+                                    <th>C&oacute;digo Pedido</th>
+                                    <th>Direcci&oacute;n</th>
+                                    <th>Zona</th>
+                                    <th>Repartidor</th>
+                                    <th>Hora Inicio Reparto</th>
+                                    <th>Hora Asignado Reparto</th>
+                                    <th>Estado</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let asset of repartoResult">
+
+                                    <td>{{asset.cod_reparto}}</td>
+                                    <td>{{asset.direccion_reparto}}</td>
+                                    <td>{{asset.zona_reparto}}</td>
+                                    <td>{{asset.nombres_repartidor}}</td>
+                                    <td>{{asset.horainicio_reparto}}</td>
+                                    <td>{{asset.horaasignado_reparto}}</td>
+                                    <td>{{asset.estado_reparto}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-6">
+                        <label></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-6">
+                        <section class="col col-4">
+                            <button type="submit" class="btn btn-lg btn-primary" (click)="verruta()">
+                                Ver Ruta
+                            </button>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <p-gmap #gmap [style]="{'width':'100%','height':'700px'}" [options]="options" [overlays]="overlays"
+                        (onMapClick)="handleMapClick($event)" (onOverlayClick)="handleOverlayClick($event)" (onOverlayDragEnd)="handleDragEnd($event)"></p-gmap>
+            </div>
+        </div>
+    </div>
+</div>
+

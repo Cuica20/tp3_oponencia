@@ -1,0 +1,72 @@
+<p-growl [(value)]="msgs"></p-growl>
+<div class="consulta-creator">
+    <div class="consulta-creator__title">
+        <h1>
+            <img src="assets/img/pollo.svg">
+            Poller&iacute;a Pardos Chicken
+        </h1>
+    </div>
+    <div id="content" class="search-view">
+        <div class="consulta-creator">
+            <div class="smart-form">
+                <div class="row">
+                    <div class="col col-6">
+                        <label></label>
+                        <!--<label>Resultado: {{reservaResult.length}}</label>-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="widget-body">
+                        <div class="table-responsive col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Id Promoci&oacute;n</th>
+                                    <th>Estado</th>
+                                    <th>Mesas</th>
+                                    <th>Detalle Promoci&oacute;n</th>
+                                    <th>Platos</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let asset of promocionpagoResult">
+                                    <td>{{asset.id_promocionpago}}</td>
+                                    <td>{{asset.estado_promocionpago}}</td>
+                                    <td>{{asset.mesa_promocionpago}}</td>
+                                    <td>{{asset.detalle_promocion}}</td>
+                                    <td>{{asset.platos_promocion}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- PLATOS -->
+                <br>
+                <br>
+                <div class="row">
+                    <div class="widget-body">
+                        <div class="table-responsive col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>C&oacute;digo Carta</th>
+                                    <th>Nombre</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let asset of cartaResult">
+                                    <td>{{asset.id_carta}}</td>
+                                    <td>{{asset.nombre_carta}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

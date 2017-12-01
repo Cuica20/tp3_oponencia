@@ -1,0 +1,31 @@
+<div id="content" class="search-view">
+    <h2>Disponibilidad de mesas</h2>
+
+    <div class="row">
+        <div class="widget-body">
+            <div class="table-responsive col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Mesas</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let asset of mesaResult, let i=index, let last=last, let odd=odd, let even=even">
+                        <td>
+                        </td>
+                        <td>
+                            <button [ngClass]="{disponible_table : asset.disponibilidad, no_disponible_table: !asset.disponibilidad}"
+                                    (click)="selectedTable(asset)">{{asset.cod_mesa}}</button>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
